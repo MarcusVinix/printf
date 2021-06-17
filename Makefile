@@ -10,15 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
+LIBFT_PATH = libft
+
+LIBFT = $(LIBFT_PATH)/libft.a
+
 NAME = libftprintf.a
 
 SRCS_PATH = srcs
 
-SRCS = 
+SRCS = $(SRCS_PATH) ft_printf.c
 
 OBJS_PATH = objs
 
-OBJS =
+OBJS = $(patsubst $(SRCS_PATH)/%.c, $(OBJS_PATH)/%.o, $(SRCS))
+
+WHERE = .
 
 CC = clang
 
@@ -26,16 +32,24 @@ RM = rm -rf
 
 CFLAGS = -Wall -Wextra -Werror
 
-all:
+all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
+	ar rcs $(NAME) $(OBJS)
 
-$(OBJS):
+$(OBJS_PATH)/%.o:	$(SRCS_PATH)/%.c
+	mkdir -p $(OBJS_PATH)
+	$(CC) $(CFLAGS) -I $(WHERE) -c $< -o $@
+
+$(LIBFT):
+	make -C $(LIBFT_PATH)
 
 clean:
-	$(RM) $(OBJS)
+	make clean -C $(LIBFT_PATH)
+	$(RM) $(OBJS_PATH)
 
 fclean: clean
+	make fclean $(LIBFT_PATH)
 	$(RM) $(NAME)
 
 re: fclean all
