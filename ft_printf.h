@@ -22,4 +22,5 @@ int		ft_printf(const char * format, ...);
 int		print_string(const char *format, va_list ap, t_option *option);
 void	check_options(const char *format, va_list ap, t_option *option);
 
+
 #endif
