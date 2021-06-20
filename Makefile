@@ -18,7 +18,8 @@ NAME = libftprintf.a
 
 SRCS_PATH = srcs
 
-SRCS = $(SRCS_PATH) ft_printf.c
+SRCS =	$(SRCS_PATH)/ft_printf.c \
+		$(SRCS_PATH)/print_string.c
 
 OBJS_PATH = objs
 
@@ -32,25 +33,32 @@ RM = rm -rf
 
 CFLAGS = -Wall -Wextra -Werror
 
-all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	ar rcs $(NAME) $(OBJS)
+
+$(NAME):	$(OBJS) $(LIBFT)
+	ar rc $(NAME) $(OBJS)
 
 $(OBJS_PATH)/%.o:	$(SRCS_PATH)/%.c
-	mkdir -p $(OBJS_PATH)
-	$(CC) $(CFLAGS) -I $(WHERE) -c $< -o $@
+	@mkdir -p $(OBJS_PATH)
+	$(CC) $(CFLAGS) -fPIE -I. -I/$(LIBFT_PATH) -c $< -o $@
 
 $(LIBFT):
-	make -C $(LIBFT_PATH)
+	@make -C $(LIBFT_PATH)
+	cp $(LIBFT) $(NAME)
+	mv $(LIBFT) $(NAME)
+
+all: $(NAME)
 
 clean:
-	make clean -C $(LIBFT_PATH)
+	@make clean -C $(LIBFT_PATH)
 	$(RM) $(OBJS_PATH)
 
+comp:
+	$(CC) $(CFLAGS) main.c libftprintf.a -o print
+
 fclean: clean
-	make fclean $(LIBFT_PATH)
-	$(RM) $(NAME)
+	@make fclean -C $(LIBFT_PATH)
+	$(RM) $(NAME) libft.a
 
 re: fclean all
 
