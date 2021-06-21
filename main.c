@@ -15,13 +15,19 @@
 
 
 int main(void)
-{
-	printf("%-10da\n", 123);
-	printf("%10da\n", 123);
-	printf("%---10da\n", 123);
-	printf("%010da\n", 123);
-	printf("%0010da\n", 123);
-	printf("%00010da\n", 123);
+{	
+
+	ft_putendl_fd("Testes String:", 1);
+	ft_putendl_fd("teste width", 1);
+	ft_printf("%20sa %5s\n", "TESTANDOFT", "HI");
+	printf("%20sa %5s\n", "TESTANDOPF", "HI");
+	ft_printf("%10sb\n", "TESTE2FT");
+	printf("%10sb\n", "TESTE2PF");
+	ft_printf("%---10sc\n", "teste3-ft");
+	printf("%---10sc\n", "teste3-pf");
+	ft_printf("%55sd\n", "teste4ft");
+	printf("%55sd\n", "teste4pf");
+	ft_putendl_fd("Fim dos testes da String.", 1);
 
 
 }

@@ -19,7 +19,8 @@ NAME = libftprintf.a
 SRCS_PATH = srcs
 
 SRCS =	$(SRCS_PATH)/ft_printf.c \
-		$(SRCS_PATH)/print_string.c
+		$(SRCS_PATH)/print_string.c \
+		$(SRCS_PATH)/check_options.c
 
 OBJS_PATH = objs
 

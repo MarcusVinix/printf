@@ -12,23 +12,33 @@
 
 #include "../ft_printf.h"
 
-int	print_string(const char *format, va_list ap, t_option *option)
+int	print_string(va_list ap, t_option *option)
 {
 	char	*str;
-	int	c;
 	int		len;
+	int		space;
+	int		zero;
 
 	str = va_arg(ap, char *);
-	c = format[option->index];
 	len = ft_strlen(str);
-	if (ft_isdigit(c))
-	{
-		if (c > len)
-			while (c-- > len)
-				ft_putchar_fd(' ', 1);
-		option->index++;
-	}
-	ft_putstr_fd(str, 1);
-
+	if (option->width > len && !option->flag_zero)
+		space = option->width - len;
+	else 
+		space = 0;
+	if (option->width > len && option->flag_zero)
+		zero = option->width - len;
+	else 
+		zero = 0;
+	if (!option->flag_minus)
+		while (space-- > 0)
+			ft_putchar_fd(' ', 1);
+	if (option->flag_zero)
+		while (zero-- > 0)
+			ft_putchar_fd('0', 1);
+	while (len--)
+		ft_putchar_fd(*str++, 1);
+	if (option->flag_minus)
+		while (space-- > 0)
+			ft_putchar_fd(' ', 1);
 	return (ft_strlen(str));
 }

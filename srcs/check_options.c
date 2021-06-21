@@ -59,5 +59,5 @@ void	check_options(const char *format, va_list ap, t_option *option)
 	set_width(format, option);
 	if (format[option->index] == '.')
 		set_precision(format, option);
-	
+	(void) ap;
 }
