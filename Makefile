@@ -20,6 +20,7 @@ SRCS_PATH = srcs
 
 SRCS =	$(SRCS_PATH)/ft_printf.c \
 		$(SRCS_PATH)/print_string.c \
+		$(SRCS_PATH)/print_char.c \
 		$(SRCS_PATH)/check_options.c
 
 OBJS_PATH = objs
@@ -55,7 +56,10 @@ clean:
 	$(RM) $(OBJS_PATH)
 
 comp:
-	$(CC) $(CFLAGS) main.c libftprintf.a -o print
+	$(CC) $(CFLAGS) main.c -o print
+
+comp1:
+	$(CC) $(CFLAGS) teste.c $(NAME) -o print
 
 fclean: clean
 	@make fclean -C $(LIBFT_PATH)

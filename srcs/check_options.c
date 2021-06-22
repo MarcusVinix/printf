@@ -37,27 +37,41 @@ static void	set_flags_zero_minus(const char *format, t_option *option)
 	}
 }
 
-static void	set_width(const char *format, t_option *option)
+static void	set_width(const char *format, va_list ap, t_option *option)
 {
-	if (ft_isdigit(format[option->index]))
+	if (format[option->index] == '*')
+	{
+		option->width = va_arg(ap, int);
+		if (option->width < 0)
+		{
+			option->flag_minus = 1;
+			option->flag_zero = 0;
+			option->width *= -1; 
+		}
+		option->index++;
+	}
+	else
 		option->width = get_number(format, option);
 }
 
-static void	set_precision(const char *format, t_option *option)
+static void	set_precision(const char *format, va_list ap, t_option *option)
 {
 	option->dot = 1;
 	option->index++;
-	if (ft_isdigit(format[option->index]))
+	if (format[option->index] == '*')
+	{
+		option->precision = va_arg(ap, int);
+		option->index++;
+	}
+	else
 		option->precision = get_number(format, option);
-
 }
 
 void	check_options(const char *format, va_list ap, t_option *option)
 {
 	if (format[option->index] == '-' || format[option->index] == '0')
 		set_flags_zero_minus(format, option);
-	set_width(format, option);
+	set_width(format, ap, option);
 	if (format[option->index] == '.')
-		set_precision(format, option);
-	(void) ap;
+		set_precision(format, ap, option);
 }

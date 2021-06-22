@@ -20,15 +20,19 @@ int	print_string(va_list ap, t_option *option)
 	int		zero;
 
 	str = va_arg(ap, char *);
+	if (!str)
+		str = "(null)";
 	len = ft_strlen(str);
+	space = 0;
+	zero = 0;
+	if (option->precision > 0 && option->precision < len)
+		len = option->precision;
+	else if (option->dot && !option->precision)
+		len = 0;
 	if (option->width > len && !option->flag_zero)
 		space = option->width - len;
-	else 
-		space = 0;
 	if (option->width > len && option->flag_zero)
 		zero = option->width - len;
-	else 
-		zero = 0;
 	if (!option->flag_minus)
 		while (space-- > 0)
 			ft_putchar_fd(' ', 1);
