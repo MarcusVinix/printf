@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   print_ptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/22 11:44:13 by mavinici          #+#    #+#             */
-/*   Updated: 2021/06/22 18:00:37 by mavinici         ###   ########.fr       */
+/*   Created: 2021/06/22 18:14:24 by mavinici          #+#    #+#             */
+/*   Updated: 2021/06/22 23:09:46 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	print_char(va_list ap, t_option *option)
-{
-	char	c;
-	int	space;
 
-	c = va_arg(ap, int);
-	if (option->width > 1)
-		space = option->width - 1;
-	else
-		space = 0;
-	option->count += space + 1;
-	if (!option->flag_minus)
-		while (space-- > 0)
-			ft_putchar_fd(' ', 1);
-	ft_putchar_fd(c, 1);
-	if (option->flag_minus)
-		while (space-- > 0)
-			ft_putchar_fd(' ', 1);
+void	print_ptr(va_list ap, t_option *option)
+{
+	(void) ap;
+	(void) option;
 }

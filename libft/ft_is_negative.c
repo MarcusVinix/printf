@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/22 11:44:13 by mavinici          #+#    #+#             */
-/*   Updated: 2021/06/22 18:00:37 by mavinici         ###   ########.fr       */
+/*   Created: 2021/06/23 09:47:49 by mavinici          #+#    #+#             */
+/*   Updated: 2021/06/23 10:29:47 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-void	print_char(va_list ap, t_option *option)
+int	ft_is_negative(int number)
 {
-	char	c;
-	int	space;
-
-	c = va_arg(ap, int);
-	if (option->width > 1)
-		space = option->width - 1;
+	if (number < 0)
+		return (1);
 	else
-		space = 0;
-	option->count += space + 1;
-	if (!option->flag_minus)
-		while (space-- > 0)
-			ft_putchar_fd(' ', 1);
-	ft_putchar_fd(c, 1);
-	if (option->flag_minus)
-		while (space-- > 0)
-			ft_putchar_fd(' ', 1);
+		return (0);
 }

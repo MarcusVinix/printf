@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   ft_count_digits.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/22 11:44:13 by mavinici          #+#    #+#             */
-/*   Updated: 2021/06/22 18:00:37 by mavinici         ###   ########.fr       */
+/*   Created: 2021/06/23 09:46:31 by mavinici          #+#    #+#             */
+/*   Updated: 2021/06/23 10:30:26 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-void	print_char(va_list ap, t_option *option)
+int	ft_count_digits(unsigned int number)
 {
-	char	c;
-	int	space;
+	int	count;
 
-	c = va_arg(ap, int);
-	if (option->width > 1)
-		space = option->width - 1;
-	else
-		space = 0;
-	option->count += space + 1;
-	if (!option->flag_minus)
-		while (space-- > 0)
-			ft_putchar_fd(' ', 1);
-	ft_putchar_fd(c, 1);
-	if (option->flag_minus)
-		while (space-- > 0)
-			ft_putchar_fd(' ', 1);
+	count = 0;
+	if (number == 0)
+		return (1);
+	while (number >= 1)
+	{
+		number /= 10;
+		count++;
+	}
+	return (count);
 }

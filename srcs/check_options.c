@@ -64,7 +64,12 @@ static void	set_precision(const char *format, va_list ap, t_option *option)
 		option->index++;
 	}
 	else
+	{
+		if (ft_isdigit(format[option->index]))
+			option->flag_zero = 0;
 		option->precision = get_number(format, option);
+	}
+		
 }
 
 void	check_options(const char *format, va_list ap, t_option *option)

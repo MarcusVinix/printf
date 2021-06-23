@@ -19,24 +19,26 @@ static void	start_options(t_option *option)
 	option->flag_minus = 0;
 	option->flag_pre_va = 0;
 	option->flag_zero = 0;
-	option->num_m = 0;
+	option->num_n = 0;
 	option->precision = 0;
 	option->width = 0;
+	option->space = 0;
+	option->zero = 0;
 }
 
-static int	check(const char *format, va_list ap, t_option *option)
+static void	check(const char *format, va_list ap, t_option *option)
 {
-	int	count;
-
-	count = 0;
 	check_options(format, ap, option);
 	if (format[option->index] == 's')
-		count = print_string(ap, option);
+		print_string(ap, option);
 	else if (format[option->index] == 'c')
-		count = print_char(ap, option);
+		print_char(ap, option);
+	else if (format[option->index] == 'p')
+		print_ptr(ap, option);
+	else if (format[option->index] == 'i')
+		print_integer(ap, option);
 	option->index++;
 	start_options(option);
-	return (count);
 }
 
 int	ft_printf(const char * format, ...)
@@ -53,7 +55,7 @@ int	ft_printf(const char * format, ...)
 		if (format[option.index] == '%')
 		{
 			option.index++;
-			option.count += check(format, ap, &option);
+			check(format, ap, &option);
 		}
 		else
 		{

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "ft_printf.h"
 
 int	main(void)
@@ -44,6 +45,86 @@ int	main(void)
 	ft_printf("%-60s: |%-20.8s|", "minimum (20) and precision (8) field left align", "quarenta e dois");
 	ft_printf("\n");
 	ft_printf("%-60s: |%*.*s|", "minimum (20) and precision (8) field left align", -20, -8, "quarenta e dois");
+	ft_printf("\n\n");
+	
+
+	printf("---------------------------------------------character----------------------------------------------\n");
+	printf("ORIGINAL\n");
+	printf("\n");
+	printf("%-60s: |%c|","format identifier", 'x');
+	printf("\n");
+	printf("%-60s: |%2c|", "with minimum field (2) width", 'x');
+	printf("\n");
+	printf("%-60s: |%-20c|", "minimum field (20) left align", 'x');
+	printf("\n");
+	printf("%-60s: |%*c|", "minimum (8) field (*) left align", -10, 'x');
+	printf("\n");
+	printf("\n");
+	ft_printf("MY FT_PRINTF\n");
+	ft_printf("\n");
+	ft_printf("%-60s: |%c|","format identifier", 'x');
+	ft_printf("\n");
+	ft_printf("%-60s: |%2c|", "with minimum field (2) width", 'x');
+	ft_printf("\n");
+	ft_printf("%-60s: |%-20c|", "minimum field (20) left align", 'x');
+	ft_printf("\n");
+	ft_printf("%-60s: |%*c|", "minimum (8) field (*) left align", -10, 'x');
+	ft_printf("\n");
+	ft_printf("\n");
+
+	printf("-----------------------------------------------integer--------------------------------------------------------\n");
+	printf("\n");
+	printf("ORIGINAL\n");
+	int hex_neg = -0x2a;
+	printf("%-60s: |%i|","format identifier", -42);
+	printf("\n");
+	printf("%-60s: |%20i|", "with minimum field (20) width", -42);
+	printf("\n");
+	printf("%-60s: |%020i|", "minimum field (20) width with 0's", -42);
+	printf("\n");
+	printf("%-60s: |%-20i|", "minimum field (20) left align", -42);
+	printf("\n");
+	printf("%-60s: |%20.1i|", "precision (1) and minimum (20) field", -42);
+	printf("\n");
+	printf("%-60s: |%.1i|", "precision (1) field", -42);
+	printf("\n");
+	printf("%-60s: |%-.1i|", "(hex_neg) precision (1) field left align", hex_neg);
+	printf("\n");
+	printf("%-60s: |%020.10i|", "minimum (20) and precision (10) field", 12345678);
+	printf("\n");
+	printf("%-60s: |%-20.10i|", "minimum (20) and precision (10) field left align", -12345678);
+	printf("\n");
+	printf("\n");
+	printf("%-60s: |%-*.*i|", "(hex_neg) minimum (20) and precision (1) field left align", 20, 1, hex_neg);
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	printf("\n");
+	ft_printf("MY FT_PRINTF\n");
+	ft_printf("\n");
+	ft_printf("%-60s: |%i|","format identifier", -42);
+	ft_printf("\n");
+	ft_printf("%-60s: |%20i|", "with minimum field (20) width", -42);
+	ft_printf("\n");
+	ft_printf("%-60s: |%020i|", "minimum field (20) width with 0's", -42);
+	ft_printf("\n");
+	ft_printf("%-60s: |%-20i|", "minimum field (20) left align", -42);
+	ft_printf("\n");
+	ft_printf("%-60s: |%20.1i|", "precision (1) and minimum (20) field", -42);
+	ft_printf("\n");
+	ft_printf("%-60s: |%.1i|", "precision (1) field", -42);
+	ft_printf("\n");
+	ft_printf("%-60s: |%-.1i|", "(hex_neg) precision (1) field left align", hex_neg);
+	ft_printf("\n");
+	ft_printf("%-60s: |%020.10i|", "minimum (20) and precision (10) field", -12345678);
+	ft_printf("\n");
+	ft_printf("%-60s: |%-20.10i|", "minimum (20) and precision (10) field left align", -12345678);
+	ft_printf("\n");
+	ft_printf("\n");
+	ft_printf("%-60s: |%-*.*i|", "(hex_neg) minimum (20) and precision (1) field left align", 20, 1, hex_neg);
+	ft_printf("\n");
+	ft_printf("\n");
+	ft_printf("\n");
 	ft_printf("\n");
 	return (0);
 }

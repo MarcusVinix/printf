@@ -31,7 +31,8 @@ SRCS =	ft_bzero.c ft_isalpha.c \
 		ft_lstsize.c ft_lstlast.c \
 		ft_lstadd_back.c ft_lstdelone.c \
 		ft_lstclear.c ft_lstiter.c \
-		ft_lstmap.c
+		ft_lstmap.c ft_count_digits.c \
+		ft_is_negative.c
 
 OBJS_PATH = objs
 
