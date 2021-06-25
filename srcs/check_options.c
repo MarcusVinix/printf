@@ -46,7 +46,7 @@ static void	set_width(const char *format, va_list ap, t_option *option)
 		{
 			option->flag_minus = 1;
 			option->flag_zero = 0;
-			option->width *= -1; 
+			option->width *= -1;
 		}
 		option->index++;
 	}
@@ -69,7 +69,6 @@ static void	set_precision(const char *format, va_list ap, t_option *option)
 			option->flag_zero = 0;
 		option->precision = get_number(format, option);
 	}
-		
 }
 
 void	check_options(const char *format, va_list ap, t_option *option)

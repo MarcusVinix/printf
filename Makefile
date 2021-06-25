@@ -57,7 +57,7 @@ comp:
 	$(CC) $(CFLAGS) main.c -o print
 
 comp1:
-	$(CC) $(CFLAGS) teste.c $(NAME) -o print
+	$(CC) $(CFLAGS) -fsanitize=leak teste.c $(NAME) -o print
 
 clean:
 	@make clean -C $(LIBFT_PATH)

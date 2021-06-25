@@ -14,10 +14,8 @@
 
 static void	start_options(t_option *option)
 {
-	
 	option->dot = 0;
 	option->flag_minus = 0;
-	option->flag_pre_va = 0;
 	option->flag_zero = 0;
 	option->num_n = 0;
 	option->precision = 0;
@@ -35,14 +33,18 @@ static void	check(const char *format, va_list ap, t_option *option)
 		print_char(ap, option);
 	else if (format[option->index] == 'p')
 		print_ptr(ap, option);
-	else if (format[option->index] == 'i')
-		print_integer(ap, option);
+	else if (format[option->index] == 'i' || format[option->index] == 'd'
+		|| format[option->index] == 'u' || format[option->index] == 'x'
+		|| format[option->index] == 'X')
+		print_integer(format[option->index], ap, option);
+	else if (format[option->index] == '%')
+		ft_putchar_fd('%', 1);
 	option->index++;
 	start_options(option);
 }
 
-int	ft_printf(const char * format, ...)
-{	
+int	ft_printf(const char *format, ...)
+{
 	va_list		ap;
 	t_option	option;
 
