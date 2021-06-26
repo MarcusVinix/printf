@@ -64,6 +64,8 @@ static void	set_precision(const char *format, va_list ap, t_option *option)
 	if (format[option->index] == '*')
 	{
 		option->precision = va_arg(ap, int);
+		if (option->precision >= 0)
+			option->flag_zero = 0;
 		option->index++;
 	}
 	else
