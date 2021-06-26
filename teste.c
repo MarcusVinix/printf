@@ -312,5 +312,10 @@ int	main(void)
 	ft_printf("\n");
 	ft_printf("\n");
 
+	printf(" 0*|%0-*.*d|*0 0*|%0*.*d|*0 \n", 6, 2, 102, 10, 21, -101);
+	ft_printf("\n");
+	ft_printf("\n");
+	ft_printf(" 0*|%0-*.*d|*0 0*|%0*.*d¦*0 \n", 6, 2, 102, 10, 21, -101);
+
 	return (0);
 }
