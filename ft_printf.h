@@ -28,5 +28,6 @@ void	check_options(const char *format, va_list ap, t_option *option);
 void	print_char(va_list ap, t_option *option);
 void	print_ptr(va_list ap, t_option *option);
 void	print_integer(char c, va_list ap, t_option *option);
+void	print_porcent(t_option *option);
 
 #endif

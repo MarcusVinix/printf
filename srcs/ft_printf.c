@@ -38,7 +38,7 @@ static void	check(const char *format, va_list ap, t_option *option)
 		|| format[option->index] == 'X')
 		print_integer(format[option->index], ap, option);
 	else if (format[option->index] == '%')
-		ft_putchar_fd('%', 1);
+		print_porcent(option);
 	option->index++;
 	start_options(option);
 }

@@ -398,9 +398,15 @@ int	main(void)
 	 printf("\n");
 	ft_printf("|%10%|");
 	 printf("\n");
-	 printf("|%%%%%%%%%%%%%%%%%s%%%s%%%s|", " ", "", "");
+	 printf("TESTE original |%5%|%3%|%10d|", 13);
 	 printf("\n");
-	 ft_printf("|%%%%%%%%%%%%%%%%%s%%%s%%%s|", " ", "", "");
+	 ft_printf("TESTE my |%5%|%3%|%10d|", 13);
+	 printf("\n");
+	 printf("\n");
+	 printf("|%%%%%%%%%%%%%%%%%%%s%%%s|", " ", "");
+	  printf("\n");
+	 printf("\n");
+	 ft_printf("|%%%%%%%%%%%%%%%%%%%s%%%s|", " ", "");
 	 printf("\n");
 	return (0);
 }
