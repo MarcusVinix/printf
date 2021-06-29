@@ -33,9 +33,14 @@ static void	set_flags_zero_minus(const char *format, t_option *option)
 		{
 			option->flag_minus = 1;
 			option->flag_zero = 0;
+			option->flag_zero_p = 0;
 		}
 		else if (format[option->index] == '0' && option->flag_minus == 0)
+		{
 			option->flag_zero = 1;
+			option->flag_zero_p = 1;
+			option->flag_minus = 0;
+		}
 		option->index++;
 	}
 }
@@ -49,6 +54,7 @@ static void	set_width(const char *format, va_list ap, t_option *option)
 		{
 			option->flag_minus = 1;
 			option->flag_zero = 0;
+			option->flag_zero_p = 0;
 			option->width *= -1;
 		}
 		option->index++;

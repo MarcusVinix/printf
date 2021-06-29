@@ -410,14 +410,14 @@ int	main(void)
 	printf("\n");
 	printf("\n");
 	printf("\n");
-	printf("%-70.193x%-140c%168c%026.51%%0125.119X" ,1102840003u,-50,-17,3721437512u);
+	printf("|%026.51%|");
 	printf("\n");
 	printf("\n");
 		printf("\n");
 			printf("\n");
 	printf("\n");
 	printf("\n");
-	ft_printf("%-70.193x%-140c%168c%026.51%%0125.119X" ,1102840003u,-50,-17,3721437512u);
+	ft_printf("|%026.51%|");
 	printf("\n");
 	printf("\n");
 	return (0);
