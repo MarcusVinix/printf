@@ -16,7 +16,6 @@ typedef struct s_option
 	int count;
 	int flag_minus;
 	int flag_zero;
-	int flag_zero_p;
 	int width;
 	int dot;
 	int precision;
