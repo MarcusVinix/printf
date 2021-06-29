@@ -8,6 +8,7 @@
 # define B_DEC "0123456789"
 # define B_HEXA_x "0123456789abcdef"
 # define B_HEXA_X "0123456789ABCDEF"
+
 typedef struct s_option
 {
 	int space;
