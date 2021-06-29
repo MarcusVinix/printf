@@ -27,12 +27,18 @@ void	print_string(va_list ap, t_option *option)
 		len = option->precision;
 	else if (option->dot && !option->precision)
 		len = 0;
-	if (option->width > len && !option->flag_zero)
-		space = option->width - len;
-	option->count += len + space;
+	if (option->width > len && option->flag_zero)
+		option->zero = option->width - len;
+	else
+		option->zero = 0;
+	if (option->width > len && !option->zero)
+		option->space = option->width - len;
+	option->count += len + option->space + option->zero;
 	if (!option->flag_minus)
 		while (space-- > 0)
 			ft_putchar_fd(' ', 1);
+	if (option->flag_zero)
+		ft_putchar_fd('0', 1);
 	while (len--)
 		ft_putchar_fd(*str++, 1);
 	if (option->flag_minus)

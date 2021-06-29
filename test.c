@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/06/29 14:29:50 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/06/29 18:13:18 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int	main(void)
 //    ft_putnbr_base_long_fd((unsigned long int)d, B_HEXA_x, 1);
     printf("\n");
     printf("\n");
-	printf("|%026.51%|");
+	printf("|%025s|", "BOM DIA");
 	printf("\n");
 	printf("\n");
-	ft_printf("|%026.51%|");
+	ft_printf("|%025s|", "BOM DIA");
 	//ft_printf("%.p", NULL);
     printf("\n");
 	printf("\n");

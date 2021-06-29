@@ -58,7 +58,7 @@ comp:
 	$(CC) $(CFLAGS) main.c -o print
 
 comp1:
-	$(CC) $(CFLAGS)  test.c $(NAME) -o print && ./print
+	$(CC) $(CFLAGS) test.c $(NAME)
 
 clean:
 	@make clean -C $(LIBFT_PATH)
