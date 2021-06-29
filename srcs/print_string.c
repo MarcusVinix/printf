@@ -16,13 +16,11 @@ void	print_string(va_list ap, t_option *option)
 {
 	char	*str;
 	int		len;
-	int		space;
 
 	str = va_arg(ap, char *);
 	if (!str)
 		str = "(null)";
 	len = ft_strlen(str);
-	space = 0;
 	if (option->precision > 0 && option->precision < len)
 		len = option->precision;
 	else if (option->dot && !option->precision)
@@ -35,13 +33,14 @@ void	print_string(va_list ap, t_option *option)
 		option->space = option->width - len;
 	option->count += len + option->space + option->zero;
 	if (!option->flag_minus)
-		while (space-- > 0)
+		while (option->space-- > 0)
 			ft_putchar_fd(' ', 1);
 	if (option->flag_zero)
-		ft_putchar_fd('0', 1);
+		while (option->zero-- > 0)
+			ft_putchar_fd('0', 1);
 	while (len--)
 		ft_putchar_fd(*str++, 1);
 	if (option->flag_minus)
-		while (space-- > 0)
+		while (option->space-- > 0)
 			ft_putchar_fd(' ', 1);
 }
