@@ -12,15 +12,8 @@
 
 #include "../ft_printf.h"
 
-void	print_string(va_list ap, t_option *option)
+int	string_options(int len, t_option *option)
 {
-	char	*str;
-	int		len;
-
-	str = va_arg(ap, char *);
-	if (!str)
-		str = "(null)";
-	len = ft_strlen(str);
 	if (option->precision > 0 && option->precision < len)
 		len = option->precision;
 	else if (option->dot && !option->precision)
@@ -32,6 +25,18 @@ void	print_string(va_list ap, t_option *option)
 	if (option->width > len && !option->zero)
 		option->space = option->width - len;
 	option->count += len + option->space + option->zero;
+	return (len);
+}
+
+void	print_string(va_list ap, t_option *option)
+{
+	char	*str;
+	int		len;
+
+	str = va_arg(ap, char *);
+	if (!str)
+		str = "(null)";
+	len = string_options(ft_strlen(str), option);
 	if (!option->flag_minus)
 		while (option->space-- > 0)
 			ft_putchar_fd(' ', 1);
