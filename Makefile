@@ -55,6 +55,8 @@ $(LIBFT):
 
 all: $(NAME)
 
+bonus: all
+
 comp:
 	$(CC) $(CFLAGS) main.c -o print
 
