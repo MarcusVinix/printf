@@ -46,7 +46,7 @@ $(NAME):	$(OBJS) $(LIBFT)
 
 $(OBJS_PATH)/%.o:	$(SRCS_PATH)/%.c
 	@mkdir -p $(OBJS_PATH)
-	$(CC) $(CFLAGS) -fPIE -I. -I/$(LIBFT_PATH) -c $< -o $@
+	$(CC) $(CFLAGS)  -I. -I/$(LIBFT_PATH) -c $< -o $@
 
 $(LIBFT):
 	@make -C $(LIBFT_PATH)
