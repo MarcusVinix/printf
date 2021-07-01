@@ -38,6 +38,8 @@ static void	check(const char *format, va_list ap, t_option *option)
 		|| format[option->index] == 'u' || format[option->index] == 'x'
 		|| format[option->index] == 'X')
 		print_integer(format[option->index], ap, option);
+	else if (format[option->index] == 'n')
+		print_bonus_n(ap, option);
 	else if (format[option->index] == '%')
 		print_porcent(option);
 	else
