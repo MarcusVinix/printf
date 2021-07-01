@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/01 14:17:39 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/01 18:45:46 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int	main(void)
 	printf("%d\n", ab);
 	int *n = &ad;
 	int *f = &ab;
-	printf("%.55n|\n", n);
-	ft_printf("%.55n|\n", f);
+	printf("%s|\n", "HELLO");
+	ft_printf("%s|\n", "HELLO");
 	//ft_printf("%.p", NULL);
 	printf("|%i|", n[0]);
 	printf("\n");

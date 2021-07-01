@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 10:34:37 by mavinici          #+#    #+#             */
-/*   Updated: 2021/06/25 16:30:30 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/01 18:49:57 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,11 @@ void	ft_putnbr_base_fd(unsigned int num, char *base, int fd)
 	if (num / len_base > 0)
 		ft_putnbr_base_fd(num / len_base, base, fd);
 	ft_putchar_fd(base[num % len_base] , fd);
+}
+
+#include <stdio.h>
+int main()
+{
+	ft_putnbr_base_fd(123, "0123", 1);
+	printf("\n");
 }
