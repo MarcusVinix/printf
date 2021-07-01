@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:14:24 by mavinici          #+#    #+#             */
-/*   Updated: 2021/06/29 12:39:53 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/06/30 21:13:25 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	print_ptr(va_list ap, t_option *option)
 		digits += 2;
 	if (option->width > digits)
 		option->space = option->width - digits;
-	option->count += option->space + digits;
+	option->count += option->space + digits + option->precision;
 	if (!option->flag_minus)
 		while (option->space-- > 0)
 			ft_putchar_fd(' ', 1);

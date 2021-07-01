@@ -40,6 +40,12 @@ static void	check(const char *format, va_list ap, t_option *option)
 		print_integer(format[option->index], ap, option);
 	else if (format[option->index] == '%')
 		print_porcent(option);
+	else
+	{
+		ft_putchar_fd('%', 1);
+		option->index--;
+		option->count++;
+	}
 	option->index++;
 	start_options(option);
 }
