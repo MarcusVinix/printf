@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/06/30 21:24:51 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/01 13:52:13 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,12 @@ int	main(void)
 	//printf("|%025s|", "BOM DIA");
 	printf("\n");
 	printf("\n");
-	ft_printf("|%025|", "BOM DIA");
+	int ad = -123;
+	printf("%d\n", ad);
+	int *n = &ad;
+	printf("|aad%.55n|\n", n);
 	//ft_printf("%.p", NULL);
-    printf("\n");
+	printf("%d", ad);
 	printf("\n");
 
 }
