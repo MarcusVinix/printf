@@ -59,7 +59,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 //new functions
-int	ft_count_digits(unsigned int number);
-int	ft_is_negative(int number);
+int		ft_count_digits(unsigned int number);
+int		ft_is_negative(int number);
 void	ft_putnbr_base_fd(unsigned int num, char *base, int fd);
 #endif
