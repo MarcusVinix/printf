@@ -25,9 +25,16 @@ static void	start_options(t_option *option)
 	option->zero = 0;
 }
 
+static void	check_bonus(const char *format, va_list ap, t_option *option)
+{
+	if (format[option->index] == 'n')
+		print_bonus_n(ap, option);
+}
+
 static void	check(const char *format, va_list ap, t_option *option)
 {
 	check_options(format, ap, option);
+	check_bonus(format, ap, option);
 	if (format[option->index] == 's')
 		print_string(ap, option);
 	else if (format[option->index] == 'c')
@@ -38,8 +45,6 @@ static void	check(const char *format, va_list ap, t_option *option)
 		|| format[option->index] == 'u' || format[option->index] == 'x'
 		|| format[option->index] == 'X')
 		print_integer(format[option->index], ap, option);
-	else if (format[option->index] == 'n')
-		print_bonus_n(ap, option);
 	else if (format[option->index] == '%')
 		print_porcent(option);
 	else
