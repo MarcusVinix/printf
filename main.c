@@ -222,7 +222,7 @@ int	main(void)
 	yellow();
 	printf("---------------------------------------------hex_integer_lowercase----------------------------------------------------\n");
 	reset();
-	
+
 	int hex = 0x9f4;
 	int integer = 42;
 	

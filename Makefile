@@ -40,9 +40,11 @@ RM = rm -rf
 
 CFLAGS = -Wall -Wextra -Werror
 
-
+all: $(NAME)
 
 $(NAME):	$(OBJS) $(LIBFT)
+	cp $(LIBFT) $(NAME)
+	mv $(LIBFT) $(NAME)
 	ar rc $(NAME) $(OBJS)
 
 $(OBJS_PATH)/%.o:	$(SRCS_PATH)/%.c
@@ -51,10 +53,6 @@ $(OBJS_PATH)/%.o:	$(SRCS_PATH)/%.c
 
 $(LIBFT):
 	@make -C $(LIBFT_PATH)
-	cp $(LIBFT) $(NAME)
-	mv $(LIBFT) $(NAME)
-
-all: $(NAME)
 
 bonus: all
 

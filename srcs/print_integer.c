@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/06/30 21:11:03 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/06 18:47:35 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	print_number_cuted(int num, t_option *option, int digits, char *base)
 {
+	if (option->flag_hashtag && ft_strncmp(base, B_HEXA_X, 16) == 0)
+		ft_putstr_fd("0X", 1);
+	else if (option->flag_hashtag && ft_strncmp(base, B_HEXA_x, 16) == 0)
+		ft_putstr_fd("0x", 1);
 	if (!option->flag_minus)
 		while (option->space-- > 0)
 			ft_putchar_fd(' ', 1);
@@ -47,7 +51,7 @@ void	print_number(int num, t_option *option, int digits, char *base)
 		option->space = option->width - digits;
 	else
 		option->space = 0;
-	option->count += digits + option->space;
+	option->count += digits + option->space + option->flag_hashtag;
 	print_number_cuted(num, option, digits, base);
 }
 
@@ -81,6 +85,8 @@ void	print_integer(char c, va_list ap, t_option *option)
 			if (option->precision > 0)
 				option->precision += 1;
 		}
+		if (option->flag_space && !option->num_n)
+			ft_putchar_fd(' ', 1);
 		print_number(num, option, count_digits(num, 10, option), B_DEC);
 	}
 	else

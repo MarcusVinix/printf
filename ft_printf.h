@@ -15,13 +15,15 @@ typedef struct s_option
 	int zero;
 	int index;
 	int count;
-	int flag_minus;
-	int flag_zero;
-	int flag_zero_p;
 	int width;
 	int dot;
 	int precision;
 	int num_n;
+	int flag_minus;
+	int flag_zero;
+	int flag_zero_p;
+	int flag_space;
+	int flag_hashtag;
 }	t_option;
 
 int		ft_printf(const char * format, ...);

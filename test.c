@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/06 14:42:06 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/06 18:27:35 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,31 +67,46 @@ int	main(void)
     printf("\n");
     printf("\n");
 	//printf("|%025s|", "BOM DIA");
+	printf("ORIGINALLLL\n\n");
 	printf("\n");
 	printf("\n");
-	printf("|%x|", -123);
+	printf("|%#x|", -123);
 	printf("\n");
-	printf("|% x|", 123);
+	printf("|%0#12x|", 123);
 	printf("\n");
-	printf("|% d|", 123);
+	printf("|%#012x|", 123);
 	printf("\n");
-	printf("|% u|", 123);
-	printf("\n");
-	printf("|% -12i|", 123);
+	printf("|%#-12x|", 123);
 	printf("\n");
 	printf("\n");
-	printf("|%- 12i|", 123);
 	printf("\n");
 	printf("\n");
-	printf("|% 012i|", 123);
+
+
+	ft_printf("MY\n\n");
+	ft_printf("\n");
+	ft_printf("\n");
+	ft_printf("|%#x|", -123);
+	printf("\n");
+	ft_printf("|%0#12x|", 123);
+	printf("\n");
+	ft_printf("|%#012x|", 123);
+	printf("\n");
+	ft_printf("|%#-12x|", 123);
+	printf("\n");
+	ft_printf("|%-12i|", 123);
+	ft_printf("\n");
+	ft_printf("\n");
+	ft_printf("|%- 12i|", 123);
+	ft_printf("\n");
+	ft_printf("\n");
+	ft_printf("|% 012i|", 123);
+	printf("\n");
+	ft_printf("\n");
+	ft_printf("|%0 12i|", 123);
 	printf("\n");
 	printf("\n");
-	printf("|%0 12i|", 123);
 	printf("\n");
-	int test = -123;
-	printf("|%#p|", &test);
-	printf("\n");
-	printf("|% p|", &test);
 	printf("\n");
 	//double f = 12.12;
 	//printf("|%f|\n", f);
