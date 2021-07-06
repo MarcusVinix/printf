@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/06 19:04:10 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/06 20:05:01 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	print_number_cuted(int num, t_option *option, int digits, char *base)
 {
-	if (option->flag_hashtag && ft_strncmp(base, B_HEXA_X, 16) == 0)
+	if (option->flag_hashtag && ft_strncmp(base, B_HEXA_X, 16) == 0 && num > 0)
 		ft_putstr_fd("0X", 1);
-	else if (option->flag_hashtag && ft_strncmp(base, B_HEXA_x, 16) == 0)
+	else if (option->flag_hashtag && ft_strncmp(base, B_HEXA_x, 16) == 0 && num > 0)
 		ft_putstr_fd("0x", 1);
 	if (!option->flag_minus)
 		while (option->space-- > 0)
@@ -34,24 +34,27 @@ void	print_number_cuted(int num, t_option *option, int digits, char *base)
 
 void	print_number(int num, t_option *option, int digits, char *base)
 {
+	if (num <= 0)
+		option->flag_space = 0;
 	if (option->dot && !option->precision && !num)
 		digits = 0;
 	if (option->precision > digits)
-		option->zero = option->precision - digits;
+		option->zero = (option->precision - digits) - option->flag_space;
 	else
 	{
 		if (option->width > digits && option->flag_zero)
-			option->zero = option->width - digits;
+			option->zero = (option->width - digits) - option->flag_space;
 		else
 			option->zero = 0;
 	}
 	if (option->zero > 0)
 		digits += option->zero;
 	if (option->width > digits && !option->flag_zero)
-		option->space = option->width - digits;
+		option->space = (option->width - digits) - option->flag_space;
 	else
 		option->space = 0;
 	option->count += digits + option->space + option->flag_hashtag + option->flag_space;
+	
 	print_number_cuted(num, option, digits, base);
 }
 
@@ -85,7 +88,7 @@ void	print_integer(char c, va_list ap, t_option *option)
 			if (option->precision > 0)
 				option->precision += 1;
 		}
-		if (option->flag_space && !option->num_n)
+		if (option->flag_space && !option->num_n && num > 0)
 			ft_putchar_fd(' ', 1);
 		print_number(num, option, count_digits(num, 10, option), B_DEC);
 	}

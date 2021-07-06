@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/06 19:03:17 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/06 19:57:16 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,9 @@ int	main(void)
 	printf("ORIGINALLLL\n\n");
 	printf("\n");
 	printf("\n");
-	printf("|%#x|", -123);
+	printf("num: %d", printf("|% 23d|", 12));
 	printf("\n");
-	printf("|%0#12x|", 123);
-	printf("\n");
-	printf("|%#012x|", 123);
-	printf("\n");
-	printf("|%#-12x|", 123);
-	printf("\n");
-	printf("num: %d", printf("|% d|", 0));
-	printf("\n");
+	printf("num: %d", ft_printf("|% 23d|", 12));
 	printf("\n");
 	printf("\n");
 
@@ -87,24 +80,11 @@ int	main(void)
 	ft_printf("MY\n\n");
 	ft_printf("\n");
 	ft_printf("\n");
-	ft_printf("|%#x|", -123);
-	printf("\n");
-	ft_printf("|%0#12x|", 123);
-	printf("\n");
-	ft_printf("|%#012x|", 123);
-	printf("\n");
-	ft_printf("|%#-12x|", 123);
-	printf("\n");
-	ft_printf("|%-12i|", 123);
 	ft_printf("\n");
 	ft_printf("\n");
-	ft_printf("|%- 12i|", 123);
-	ft_printf("\n");
-	ft_printf("\n");
-	ft_printf("|% 012i|", 123);
 	printf("\n");
 	ft_printf("\n");
-	printf("num: %d", ft_printf("|% d|", 0));
+	printf("num: %d", ft_printf("|% 23d|", 12));
 	printf("\n");
 	printf("\n");
 	printf("\n");
