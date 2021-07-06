@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/06 14:16:17 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/06 14:42:06 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,18 @@ int	main(void)
 	printf("\n");
 	printf("|% u|", 123);
 	printf("\n");
-	printf("|% i|", 123);
+	printf("|% -12i|", 123);
 	printf("\n");
-	int test = 123;
+	printf("\n");
+	printf("|%- 12i|", 123);
+	printf("\n");
+	printf("\n");
+	printf("|% 012i|", 123);
+	printf("\n");
+	printf("\n");
+	printf("|%0 12i|", 123);
+	printf("\n");
+	int test = -123;
 	printf("|%#p|", &test);
 	printf("\n");
 	printf("|% p|", &test);

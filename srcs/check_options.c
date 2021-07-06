@@ -83,6 +83,7 @@ static void	set_precision(const char *format, va_list ap, t_option *option)
 
 void	check_options(const char *format, va_list ap, t_option *option)
 {
+
 	if (format[option->index] == '-' || format[option->index] == '0')
 		set_flags_zero_minus(format, option);
 	set_width(format, ap, option);
