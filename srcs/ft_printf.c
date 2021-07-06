@@ -29,6 +29,8 @@ static void	check_bonus(const char *format, va_list ap, t_option *option)
 {
 	if (format[option->index] == 'n')
 		print_bonus_n(ap, option);
+	else if (format[option->index] == 'f')
+		print_bonus_f(ap, option);
 }
 
 static void	check(const char *format, va_list ap, t_option *option)

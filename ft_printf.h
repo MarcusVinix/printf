@@ -34,5 +34,6 @@ void	print_porcent(t_option *option);
 
 //bonus
 void	print_bonus_n(va_list ap, t_option *option);
+void	print_bonus_f(va_list ap, t_option *option);
 
 #endif

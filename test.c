@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/05 19:38:09 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/06 11:46:24 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,27 @@ int	main(void)
 	//printf("|%025s|", "BOM DIA");
 	printf("\n");
 	printf("\n");
-
-	double f = 12.12;
-	printf("|%f|\n", f);
-	printf("%-35s:|%20f|\n", "width 20", f);
-	printf("%-35s:|%020.6f|\n", "flag 0, width 20, precision 6", f);
-	printf("%-35s:|%020.36f|\n", "flag 0, width 20, precision 36", f);
-	printf("%-35s:|%-20.6f|\n", "width 20, precision 6", f);
-	printf("%-35s:|%-20.f|\n", "flag -, width 20, precision ", f);
-	printf("%-35s:|%-20.0f|\n", "flag -, width 20, precision 0", f);
+	printf("|%#x|", 123);
+	printf("\n");
+	printf("|%x|", 123);
+	printf("\n");
+	printf("|%#6d|", 123);
+	printf("\n");
+	printf("|%#d|", 123);
+	printf("\n");
+	int test = 123;
+	printf("|%#p|", &test);
+	printf("\n");
+	printf("|%p|", &test);
+	printf("\n");
+	//double f = 12.12;
+	//printf("|%f|\n", f);
+	//printf("%-35s:|%20f|\n", "width 20", f);
+	//printf("%-35s:|%020.6f|\n", "flag 0, width 20, precision 6", f);
+	//printf("%-35s:|%020.36f|\n", "flag 0, width 20, precision 36", f);
+	//printf("%-35s:|%-20.6f|\n", "width 20, precision 6", f);
+	//printf("%-35s:|%-20.f|\n", "flag -, width 20, precision ", f);
+	//printf("%-35s:|%-20.0f|\n", "flag -, width 20, precision 0", f);
 	//ft_printf("my |%i|\n", 123);
 	//ft_printf("%.p", NULL);
 	//printf("|%i|", n[0]);

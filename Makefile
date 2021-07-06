@@ -25,6 +25,7 @@ SRCS =	$(SRCS_PATH)/ft_printf.c \
 		$(SRCS_PATH)/print_integer.c \
 		$(SRCS_PATH)/check_options.c \
 		$(SRCS_PATH)/print_porcent.c \
+		$(SRCS_PATH)/print_bonus_f.c \
 		$(SRCS_PATH)/print_bonus_n.c
 
 OBJS_PATH = objs
