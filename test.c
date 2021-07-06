@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/06 18:27:35 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/06 19:03:17 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	main(void)
 	printf("\n");
 	printf("|%#-12x|", 123);
 	printf("\n");
+	printf("num: %d", printf("|% d|", 0));
 	printf("\n");
 	printf("\n");
 	printf("\n");
@@ -103,7 +104,7 @@ int	main(void)
 	ft_printf("|% 012i|", 123);
 	printf("\n");
 	ft_printf("\n");
-	ft_printf("|%0 12i|", 123);
+	printf("num: %d", ft_printf("|% d|", 0));
 	printf("\n");
 	printf("\n");
 	printf("\n");
@@ -123,3 +124,23 @@ int	main(void)
 	//ft_printf("|%i|", f[0]);
 	printf("\n");
 }
+
+
+//ategory: #
+//ubcategory: x
+//.KO 2.KO 3.KO 4.KO 5.KO 6.KO 7.KO 8.KO 9.OK 10.KO 11.KO 12.KO 13.KO 14.KO 15.KO 16.KO 
+//ubcategory: X
+//7.KO 18.KO 19.KO 20.KO 21.KO 22.KO 23.KO 24.KO 25.OK 26.KO 27.KO 28.KO 29.KO 30.KO 31.KO 32.KO 
+//ubcategory: e
+//3.KO 34.KO 35.KO 36.KO 37.KO 38.KO 39.KO 40.KO 41.KO 42.KO 43.KO 44.KO 45.KO 46.KO 47.KO 48.KO 
+//ubcategory: f
+//9.KO 50.KO 51.KO 52.KO 53.KO 54.KO 55.KO 56.KO 57.KO 58.KO 59.KO 60.KO 61.KO 62.KO 63.KO 64.KO 
+//ubcategory: g
+//5.KO 66.KO 67.KO 68.KO 69.KO 70.KO 71.KO 72.KO 73.KO 74.KO 75.KO 76.KO 77.KO 78.KO 79.KO 80.KO 
+//ategory: ' '
+//ubcategory: d
+//.KO 2.KO 3.KO 4.KO 5.KO 6.KO 7.KO 8.OK 9.OK 10.OK 11.OK 12.OK 13.OK 14.OK 15.OK 16.OK 17.OK 18.OK 19.OK 20.OK 21.KO 22.KO
+//23.KO 
+//ubcategory: i
+//4.KO 25.KO 26.KO 27.KO 28.KO 29.KO 30.KO 31.OK 32.OK 33.OK 34.OK 35.OK 36.OK 37.OK 38.OK 39.OK 40.OK 41.OK 42.OK 43.OK 44
+//KO 45.KO 46.KO 

@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/06 18:47:35 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/06 19:04:10 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_number(int num, t_option *option, int digits, char *base)
 		option->space = option->width - digits;
 	else
 		option->space = 0;
-	option->count += digits + option->space + option->flag_hashtag;
+	option->count += digits + option->space + option->flag_hashtag + option->flag_space;
 	print_number_cuted(num, option, digits, base);
 }
 
