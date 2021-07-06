@@ -20,8 +20,6 @@ int	string_options(int len, t_option *option)
 		len = 0;
 	if (option->width > len && option->flag_zero)
 		option->zero = option->width - len;
-	else
-		option->zero = 0;
 	if (option->width > len && !option->zero)
 		option->space = option->width - len;
 	option->count += len + option->space + option->zero;
