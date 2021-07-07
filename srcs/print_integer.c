@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/07 17:39:41 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:19:25 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	print_number_cuted(int num, t_option *option, int digits, char *base)
 {
-	if (option->num_n)
-		option->flag_plus = 0;
 	if (option->precision >= option->width && option->flag_plus)
 		option->count += 1;
 	option->space -= option->flag_plus;
@@ -52,7 +50,7 @@ void	print_number(int num, t_option *option, int digits, char *base)
 	else
 	{
 		if (option->width > digits && option->flag_zero)
-			option->zero = ((option->width - digits) - option->flag_space) - option->flag_hashtag;
+			option->zero = (((option->width - digits) - option->flag_space) - option->flag_hashtag) - option->flag_plus;
 		if (option->zero < 0)
 			option->zero = 0;
 	}
@@ -63,7 +61,7 @@ void	print_number(int num, t_option *option, int digits, char *base)
 	if (option->space < 0)
 		option->space = 0;
 	option->count += digits + option->space;
-	option->count += option->flag_hashtag + option->flag_space;
+	option->count += option->flag_hashtag + option->flag_space + option->flag_plus;
 	print_number_cuted(num, option, digits, base);
 }
 
@@ -93,6 +91,7 @@ void	print_integer(char c, va_list ap, t_option *option)
 		if (num < 0)
 		{
 			option->num_n = 1;
+			option->flag_plus = 0;
 			num *= -1;
 			if (option->precision > 0)
 				option->precision += 1;
