@@ -29,9 +29,7 @@ static void	start_options(t_option *option)
 
 static void	check_bonus(const char *format, va_list ap, t_option *option)
 {
-	if (format[option->index] == 'n')
-		print_bonus_n(ap, option);
-	else if (format[option->index] == 'f')
+	if (format[option->index] == 'f')
 		print_bonus_f(ap, option);
 }
 
@@ -51,6 +49,8 @@ static void	check(const char *format, va_list ap, t_option *option)
 		print_integer(format[option->index], ap, option);
 	else if (format[option->index] == '%')
 		print_porcent(option);
+	else if (format[option->index] == 'n')
+		print_bonus_n(ap, option);
 	else
 	{
 		ft_putchar_fd('%', 1);

@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/07 11:15:34 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/07 13:25:48 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,20 @@ int	main(void)
 //    printf("\n");
 //    ft_putnbr_base_long_fd((unsigned long int)d, B_HEXA_x, 1);
     printf("\n");
+	int tes = 12;
     printf("\n");
 	//printf("|%025s|", "BOM DIA");
 	printf("ORIGINALLLL\n\n");
 	printf("\n");
 	printf("\n");
-	printf("retorno: %d", printf(" |%#-03.*x| ", 2, 0));
+	printf("retorno: %d", printf(" |%n| ", &tes));
 	printf("\n");
-	printf("retorno: %d", printf("|% .2d|", 0));
+	printf("retorno: %d", tes);
 	printf("\n");
 	printf("\n");
-	printf("retorno: %d", ft_printf(" |%#-03.*x| ", 2, 0));
+	printf("retorno: %d", ft_printf(" |%n| ", &tes));
 	printf("\n");
-	printf("retorno: %d", ft_printf("|%#x|", 0));
+	printf("retorno: %d", tes);
 	printf("\n");
 	printf("\n");
 
@@ -97,6 +98,7 @@ int	main(void)
 	//ft_printf("my |%i|\n", 123);
 	//ft_printf("%.p", NULL);
 	//printf("|%i|", n[0]);
+
 	printf("\n");
 	//ft_printf("|%i|", f[0]);
 	printf("\n");
