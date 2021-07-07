@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/06 21:11:04 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/06 21:20:00 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_number_cuted(int num, t_option *option, int digits, char *base)
 
 void	print_number(int num, t_option *option, int digits, char *base)
 {
-	if (num <= 0)
+	if (option->num_n)
 		option->flag_space = 0;
 	if (option->dot && !option->precision && !num)
 		digits = 0;
