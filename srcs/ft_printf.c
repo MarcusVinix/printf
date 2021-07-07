@@ -20,6 +20,7 @@ static void	start_options(t_option *option)
 	option->flag_zero_p = 0;
 	option->flag_space = 0;
 	option->flag_hashtag = 0;
+	option->flag_plus = 0;
 	option->num_n = 0;
 	option->precision = 0;
 	option->width = 0;

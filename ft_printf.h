@@ -24,6 +24,7 @@ typedef struct s_option
 	int flag_zero_p;
 	int flag_space;
 	int flag_hashtag;
+	int flag_plus;
 }	t_option;
 
 int		ft_printf(const char * format, ...);
