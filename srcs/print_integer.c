@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/07 12:12:49 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/07 14:46:29 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ void	print_number(int num, t_option *option, int digits, char *base)
 	{
 		if (option->width > digits && option->flag_zero)
 			option->zero = ((option->width - digits) - option->flag_space) - option->flag_hashtag;
-		else
+		if (option->zero < 0)
 			option->zero = 0;
 	}
 	if (option->zero > 0)
 		digits += option->zero;
 	if (option->width > digits && !option->flag_zero)
 		option->space = ((option->width - digits) - option->flag_space) - option->flag_hashtag;
-	else
+	if (option->space < 0)
 		option->space = 0;
 	option->count += digits + option->space;
 	option->count += option->flag_hashtag + option->flag_space;
