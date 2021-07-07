@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/06 21:35:58 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/07 10:55:39 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	print_number(int num, t_option *option, int digits, char *base)
 {
 	if (option->num_n)
 		option->flag_space = 0;
+	if (num == 0)
+		option->flag_hashtag = 0;
 	if (option->dot && !option->precision && !num)
 		digits = 0;
 	if (option->precision > digits)
@@ -43,18 +45,18 @@ void	print_number(int num, t_option *option, int digits, char *base)
 	else
 	{
 		if (option->width > digits && option->flag_zero)
-			option->zero = (option->width - digits) - option->flag_space;
+			option->zero = ((option->width - digits) - option->flag_space) - option->flag_hashtag;
 		else
 			option->zero = 0;
 	}
 	if (option->zero > 0)
 		digits += option->zero;
 	if (option->width > digits && !option->flag_zero)
-		option->space = (option->width - digits) - option->flag_space;
+		option->space = ((option->width - digits) - option->flag_space) - option->flag_hashtag;
 	else
 		option->space = 0;
-	option->count += digits + option->space + option->flag_hashtag + option->flag_space;
-	
+	option->count += digits + option->space + option->zero;
+	option->count += option->flag_hashtag + option->flag_space;
 	print_number_cuted(num, option, digits, base);
 }
 
