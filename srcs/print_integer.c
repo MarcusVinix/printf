@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/06 20:05:01 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/06 21:11:04 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	print_integer(char c, va_list ap, t_option *option)
 			if (option->precision > 0)
 				option->precision += 1;
 		}
-		if (option->flag_space && !option->num_n && num > 0)
+		if (option->flag_space && !option->num_n && num >= 0)
 			ft_putchar_fd(' ', 1);
 		print_number(num, option, count_digits(num, 10, option), B_DEC);
 	}

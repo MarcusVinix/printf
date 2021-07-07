@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/06 19:57:16 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/06 20:52:50 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,24 +70,22 @@ int	main(void)
 	printf("ORIGINALLLL\n\n");
 	printf("\n");
 	printf("\n");
-	printf("num: %d", printf("|% 23d|", 12));
+	printf("num: %d", printf("|%   d|", -1));
 	printf("\n");
-	printf("num: %d", ft_printf("|% 23d|", 12));
-	printf("\n");
+	printf("num: %d", printf("|%   d|", 1));
 	printf("\n");
 
+	printf("\n");
+	printf("num: %d", ft_printf("|%   d|", -1));
+	printf("\n");
+	printf("num: %d", ft_printf("|%   d|", 1));
+	printf("\n");
+	printf("\n");
 
 	ft_printf("MY\n\n");
 	ft_printf("\n");
 	ft_printf("\n");
 	ft_printf("\n");
-	ft_printf("\n");
-	printf("\n");
-	ft_printf("\n");
-	printf("num: %d", ft_printf("|% 23d|", 12));
-	printf("\n");
-	printf("\n");
-	printf("\n");
 	printf("\n");
 	//double f = 12.12;
 	//printf("|%f|\n", f);
