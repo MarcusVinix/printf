@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/07 16:10:07 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/07 17:26:09 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	print_number_cuted(int num, t_option *option, int digits, char *base)
 	if (option->precision >= option->width && option->flag_plus)
 		option->count += 1;
 	option->space -= option->flag_plus;
+	option->zero -= option->flag_plus;
 	if (option->flag_hashtag && ft_strncmp(base, B_HEXA_X, 16) == 0 && num > 0)
 		ft_putstr_fd("0X", 1);
 	else if (option->flag_hashtag && ft_strncmp(base, B_HEXA_x, 16) == 0 && num > 0)
