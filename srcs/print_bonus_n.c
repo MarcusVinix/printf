@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 13:56:59 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/01 14:14:17 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/09 19:52:09 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	print_bonus_n(va_list ap, t_option *option)
 {
-	int	*n;
+	intmax_t	*n;
 
-	n = va_arg(ap, int *);
+	if (option->flag_h)
+		n = (intmax_t *)((short *)va_arg(ap, int *));
+	else
+		n = (intmax_t *)((int *)va_arg(ap, int *));
 	*n = option->count;
 }

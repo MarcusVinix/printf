@@ -12,55 +12,8 @@
 
 #include "../ft_printf.h"
 
-static void	start_options(t_option *option)
-{
-	option->dot = 0;
-	option->flag_minus = 0;
-	option->flag_zero = 0;
-	option->flag_zero_p = 0;
-	option->flag_space = 0;
-	option->flag_hashtag = 0;
-	option->flag_plus = 0;
-	option->num_n = 0;
-	option->precision = 0;
-	option->width = 0;
-	option->space = 0;
-	option->zero = 0;
-}
-
-static void	check_bonus(const char *format, va_list ap, t_option *option)
-{
-	if (format[option->index] == 'f')
-		print_bonus_f(ap, option);
-}
-
-static void	check(const char *format, va_list ap, t_option *option)
-{
-	check_options(format, ap, option);
-	check_bonus(format, ap, option);
-	if (format[option->index] == 's')
-		print_string(ap, option);
-	else if (format[option->index] == 'c')
-		print_char(ap, option);
-	else if (format[option->index] == 'p')
-		print_ptr(ap, option);
-	else if (format[option->index] == 'i' || format[option->index] == 'd'
-		|| format[option->index] == 'u' || format[option->index] == 'x'
-		|| format[option->index] == 'X')
-		print_integer(format[option->index], ap, option);
-	else if (format[option->index] == '%')
-		print_porcent(option);
-	else if (format[option->index] == 'n')
-		print_bonus_n(ap, option);
-	else
-	{
-		ft_putchar_fd('%', 1);
-		option->index--;
-		option->count++;
-	}
-	option->index++;
-	start_options(option);
-}
+static void	start_options(t_option *option);
+static void	check(const char *format, va_list ap, t_option *option);
 
 int	ft_printf(const char *format, ...)
 {
@@ -87,4 +40,48 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(ap);
 	return (option.count);
+}
+
+static void	start_options(t_option *option)
+{
+	option->dot = 0;
+	option->flag_minus = 0;
+	option->flag_zero = 0;
+	option->flag_zero_p = 0;
+	option->flag_space = 0;
+	option->flag_hashtag = 0;
+	option->flag_plus = 0;
+	option->flag_h = 0;
+	option->num_n = 0;
+	option->precision = 0;
+	option->width = 0;
+	option->space = 0;
+	option->zero = 0;
+}
+
+static void	check(const char *format, va_list ap, t_option *option)
+{
+	check_options(format, ap, option);
+	if (format[option->index] == 's')
+		print_string(ap, option);
+	else if (format[option->index] == 'c')
+		print_char(ap, option);
+	else if (format[option->index] == 'p')
+		print_ptr(ap, option);
+	else if (format[option->index] == 'i' || format[option->index] == 'd'
+		|| format[option->index] == 'u' || format[option->index] == 'x'
+		|| format[option->index] == 'X')
+		print_integer(format[option->index], ap, option);
+	else if (format[option->index] == '%')
+		print_porcent(option);
+	else if (format[option->index] == 'n')
+		print_bonus_n(ap, option);
+	else
+	{
+		ft_putchar_fd('%', 1);
+		option->index--;
+		option->count++;
+	}
+	option->index++;
+	start_options(option);
 }
