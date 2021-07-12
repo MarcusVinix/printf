@@ -29,7 +29,6 @@ static int	count_digits(int num, int base)
 		n /= base;
 		count++;
 	}
-
 	return (count);
 }
 
@@ -49,9 +48,8 @@ char	*ft_itoa_base(int n, char *base, int len_base)
 	i = 0;
 	if (num < 0)
 	{
-		str[i] = '-';
+		str[i++] = '-';
 		num *= -1;
-		i++;
 	}
 	while (digits > i && num / len_base > 0)
 	{

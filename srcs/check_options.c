@@ -28,8 +28,8 @@ static int	get_number(const char *format, t_option *option)
 static void	set_flags_zero_minus(const char *format, t_option *option)
 {
 	while (format[option->index] == '-' || format[option->index] == '0'
-			|| format[option->index] == ' ' || format[option->index] == '#'
-			|| format[option->index] == '+')
+		|| format[option->index] == ' ' || format[option->index] == '#'
+		|| format[option->index] == '+')
 	{
 		if (format[option->index] == '-')
 		{
@@ -101,5 +101,6 @@ void	check_options(const char *format, va_list ap, t_option *option)
 	if (format[option->index] == 'h')
 	{
 		option->flag_h = 1;
+		option->index++;
 	}
 }

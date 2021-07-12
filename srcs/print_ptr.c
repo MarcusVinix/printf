@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:14:24 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/09 19:05:36 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/10 15:13:52 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_ptr(va_list ap, t_option *option)
 	while (option->precision-- > 0)
 		ft_putchar_fd('0', 1);
 	if (digits > 2)
-		ft_putnbr_base_long_fd(number, B_HEXA_x, 1);
+		ft_putnbr_base_long_fd(number, B_HEXA_LO, 1);
 	if (option->flag_minus)
 		while (option->space-- > 0)
 			ft_putchar_fd(' ', 1);
