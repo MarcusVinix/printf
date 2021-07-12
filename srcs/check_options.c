@@ -98,9 +98,4 @@ void	check_options(const char *format, va_list ap, t_option *option)
 	set_width(format, ap, option);
 	if (format[option->index] == '.')
 		set_precision(format, ap, option);
-	if (format[option->index] == 'h')
-	{
-		option->flag_h = 1;
-		option->index++;
-	}
 }

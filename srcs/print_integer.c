@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/12 11:06:00 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/12 18:58:14 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ void	print_integer(char c, va_list ap, t_option *fl)
 
 	if (c == 'i' || c == 'd')
 	{
-		if (fl->flag_h)
-			num = (int)((short)va_arg(ap, int));
-		else
-			num = va_arg(ap, int);
+		num = va_arg(ap, int);
 		if (num < 0)
 		{
 			fl->num_n = 1;
@@ -47,10 +44,7 @@ void	print_dxX(char c, va_list ap, t_option *fl)
 {
 	unsigned int	num;
 
-	if (fl->flag_h)
-		num = (unsigned int)((unsigned short)va_arg(ap, unsigned int));
-	else
-		num = va_arg(ap, unsigned int);
+	num = va_arg(ap, unsigned int);
 	if (c == 'u')
 		print_n(num, fl, count_digits(num, 10, fl), B_DEC);
 	else if (c == 'x')

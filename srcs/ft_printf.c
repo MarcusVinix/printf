@@ -51,7 +51,6 @@ static void	start_options(t_option *option)
 	option->flag_space = 0;
 	option->flag_hash = 0;
 	option->flag_plus = 0;
-	option->flag_h = 0;
 	option->num_n = 0;
 	option->precision = 0;
 	option->width = 0;
@@ -74,8 +73,6 @@ static void	check(const char *format, va_list ap, t_option *option)
 		print_integer(format[option->index], ap, option);
 	else if (format[option->index] == '%')
 		print_porcent(option);
-	else if (format[option->index] == 'n')
-		print_bonus_n(ap, option);
 	else
 	{
 		ft_putchar_fd('%', 1);
