@@ -26,7 +26,7 @@ typedef struct s_option
 	int	flag_zero;
 	int	flag_zero_p;
 	int	flag_space;
-	int	flag_hashtag;
+	int	flag_hash;
 	int	flag_plus;
 	int	flag_h;
 }	t_option;

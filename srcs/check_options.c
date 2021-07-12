@@ -45,7 +45,7 @@ static void	set_flags_zero_minus(const char *format, t_option *option)
 		if (format[option->index] == ' ')
 			option->flag_space = 1;
 		if (format[option->index] == '#')
-			option->flag_hashtag = 2;
+			option->flag_hash = 2;
 		if (format[option->index] == '+')
 			option->flag_plus = 1;
 		option->index++;
