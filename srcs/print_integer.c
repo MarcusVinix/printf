@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/12 10:31:55 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/12 11:06:00 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	print_n(int num, t_option *fl, int digits, char *base);
 void	print_n_cuted(int num, t_option *fl, int digits, char *base);
 int		count_digits(unsigned int num, int base, t_option *fl);
+void	print_dxX(char c, va_list ap, t_option *fl);
 
 void	print_integer(char c, va_list ap, t_option *fl)
 {
 	int				num;
-	uintmax_t				unum;
 
 	if (c == 'i' || c == 'd')
 	{
@@ -40,18 +40,23 @@ void	print_integer(char c, va_list ap, t_option *fl)
 		print_n(num, fl, count_digits(num, 10, fl), B_DEC);
 	}
 	else
-	{
-		if (fl->flag_h)
-			unum = (uintmax_t)((unsigned short)va_arg(ap, unsigned int));
-		else
-			unum = (uintmax_t)va_arg(ap, unsigned int);
-		if (c == 'u')
-			print_n(unum, fl, count_digits(unum, 10, fl), B_DEC);
-		else if (c == 'x')
-			print_n(unum, fl, count_digits(unum, 16, fl), B_HEXA_LO);
-		else
-			print_n(unum, fl, count_digits(unum, 16, fl), B_HEXA_UP);
-	}
+		print_dxX(c, ap, fl);
+}
+
+void	print_dxX(char c, va_list ap, t_option *fl)
+{
+	unsigned int	num;
+
+	if (fl->flag_h)
+		num = (unsigned int)((unsigned short)va_arg(ap, unsigned int));
+	else
+		num = va_arg(ap, unsigned int);
+	if (c == 'u')
+		print_n(num, fl, count_digits(num, 10, fl), B_DEC);
+	else if (c == 'x')
+		print_n(num, fl, count_digits(num, 16, fl), B_HEXA_LO);
+	else
+		print_n(num, fl, count_digits(num, 16, fl), B_HEXA_UP);
 }
 
 void	print_n(int num, t_option *fl, int digits, char *base)

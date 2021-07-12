@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/12 09:37:38 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/12 12:43:24 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ int	main(void)
 	printf("ORIGINALLLL\n\n");
 	printf("\n");
 	printf("\n");
-	printf("retorno: %d", printf("%%*.c%c%%*.s*%ps%%*.X", '0', NULL));
+	printf("retorno: %d", printf(" |%n| ", n));
 	printf("\n");
-	printf("retorno: %d", ft_printf("%%*.c%c%%*.s*%ps%%*.X", '0', NULL));
+	printf("%p", n);
 	printf("\n");
 //	printf("retorno: %d", ft_printf(" |%n| ", n));
-	printf("\n");
 
 	printf("\n");
 	printf("\n");
