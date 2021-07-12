@@ -24,7 +24,7 @@ SRCS =	$(SRCS_PATH)/ft_printf.c \
 		$(SRCS_PATH)/print_ptr.c \
 		$(SRCS_PATH)/print_integer.c \
 		$(SRCS_PATH)/check_options.c \
-		$(SRCS_PATH)/print_porcent.c
+		$(SRCS_PATH)/print_porcent.c \
 
 OBJS_PATH = objs
 
@@ -38,27 +38,27 @@ RM = rm -rf
 
 CFLAGS = -Wall -Wextra -Werror
 
-
+all: $(NAME)
 
 $(NAME):	$(OBJS) $(LIBFT)
+	cp $(LIBFT) $(NAME)
+	mv $(LIBFT) $(NAME)
 	ar rc $(NAME) $(OBJS)
 
 $(OBJS_PATH)/%.o:	$(SRCS_PATH)/%.c
 	@mkdir -p $(OBJS_PATH)
-	$(CC) $(CFLAGS) -I. -I/$(LIBFT_PATH) -c $< -o $@
+	$(CC) $(CFLAGS)  -I. -I/$(LIBFT_PATH) -c $< -o $@
 
 $(LIBFT):
 	@make -C $(LIBFT_PATH)
-	cp $(LIBFT) $(NAME)
-	mv $(LIBFT) $(NAME)
 
-all: $(NAME)
+bonus: all
 
 comp:
 	$(CC) $(CFLAGS) main.c -o print
 
 comp1:
-	$(CC) $(CFLAGS) test.c $(NAME) -o print
+	$(CC) $(CFLAGS) test.c $(NAME)
 
 clean:
 	@make clean -C $(LIBFT_PATH)

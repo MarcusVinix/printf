@@ -6,52 +6,109 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/06/30 21:11:03 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/12 18:58:14 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	print_number_cuted(int num, t_option *option, int digits, char *base)
+void	print_n(int num, t_option *fl, int digits, char *base);
+void	print_n_cuted(int num, t_option *fl, int digits, char *base);
+int		count_digits(unsigned int num, int base, t_option *fl);
+void	print_dxX(char c, va_list ap, t_option *fl);
+
+void	print_integer(char c, va_list ap, t_option *fl)
 {
-	if (!option->flag_minus)
-		while (option->space-- > 0)
+	int				num;
+
+	if (c == 'i' || c == 'd')
+	{
+		num = va_arg(ap, int);
+		if (num < 0)
+		{
+			fl->num_n = 1;
+			fl->flag_plus = 0;
+			num *= -1;
+			if (fl->precision > 0)
+				fl->precision += 1;
+		}
+		if (fl->flag_space && !fl->num_n && num >= 0 && !fl->flag_plus)
 			ft_putchar_fd(' ', 1);
-	if (option->num_n == 1)
+		print_n(num, fl, count_digits(num, 10, fl), B_DEC);
+	}
+	else
+		print_dxX(c, ap, fl);
+}
+
+void	print_dxX(char c, va_list ap, t_option *fl)
+{
+	unsigned int	num;
+
+	num = va_arg(ap, unsigned int);
+	if (c == 'u')
+		print_n(num, fl, count_digits(num, 10, fl), B_DEC);
+	else if (c == 'x')
+		print_n(num, fl, count_digits(num, 16, fl), B_HEXA_LO);
+	else
+		print_n(num, fl, count_digits(num, 16, fl), B_HEXA_UP);
+}
+
+void	print_n(int num, t_option *fl, int digits, char *base)
+{
+	if (fl->num_n || fl->flag_plus)
+		fl->flag_space = 0;
+	if (num == 0)
+		fl->flag_hash = 0;
+	if (fl->dot && !fl->precision && !num)
+		digits = 0;
+	if (fl->precision > digits)
+		fl->zero = (fl->precision - digits);
+	else
+	{
+		if (fl->width > digits && fl->flag_zero)
+			fl->zero = ((fl->width - digits) - fl->flag_space) - fl->flag_hash;
+		if (fl->zero < 0)
+			fl->zero = 0;
+	}
+	if (fl->zero > 0)
+		digits += fl->zero;
+	if (fl->width > digits && !fl->flag_zero)
+		fl->space = ((fl->width - digits) - fl->flag_space) - fl->flag_hash;
+	if (fl->space < 0)
+		fl->space = 0;
+	fl->count += digits + fl->space;
+	fl->count += fl->flag_hash + fl->flag_space;
+	print_n_cuted(num, fl, digits, base);
+}
+
+void	print_n_cuted(int num, t_option *fl, int digits, char *base)
+{
+	if (fl->precision >= fl->width && fl->flag_plus)
+		fl->count += 1;
+	fl->space -= fl->flag_plus;
+	if (!fl->precision && fl->flag_plus)
+		fl->zero -= fl->flag_plus;
+	if (fl->flag_hash && ft_strncmp(base, B_HEXA_UP, 16) == 0 && num > 0)
+		ft_putstr_fd("0X", 1);
+	else if (fl->flag_hash && ft_strncmp(base, B_HEXA_LO, 16) == 0 && num > 0)
+		ft_putstr_fd("0x", 1);
+	if (!fl->flag_minus)
+		while (fl->space-- > 0)
+			ft_putchar_fd(' ', 1);
+	if (fl->flag_plus && !fl->num_n && ft_strncmp(base, B_DEC, 10) == 0)
+		ft_putchar_fd('+', 1);
+	if (fl->num_n == 1)
 		ft_putchar_fd('-', 1);
-	while (option->zero-- > 0)
+	while (fl->zero-- > 0)
 		ft_putchar_fd('0', 1);
 	if (digits)
 		ft_putnbr_base_fd(num, base, 1);
-	if (option->flag_minus)
-		while (option->space-- > 0)
+	if (fl->flag_minus)
+		while (fl->space-- > 0)
 			ft_putchar_fd(' ', 1);
 }
 
-void	print_number(int num, t_option *option, int digits, char *base)
-{
-	if (option->dot && !option->precision && !num)
-		digits = 0;
-	if (option->precision > digits)
-		option->zero = option->precision - digits;
-	else
-	{
-		if (option->width > digits && option->flag_zero)
-			option->zero = option->width - digits;
-		else
-			option->zero = 0;
-	}
-	if (option->zero > 0)
-		digits += option->zero;
-	if (option->width > digits && !option->flag_zero)
-		option->space = option->width - digits;
-	else
-		option->space = 0;
-	option->count += digits + option->space;
-	print_number_cuted(num, option, digits, base);
-}
-
-static int	count_digits(unsigned int num, int base, t_option *option)
+int	count_digits(unsigned int num, int base, t_option *fl)
 {
 	int	count;
 
@@ -63,34 +120,6 @@ static int	count_digits(unsigned int num, int base, t_option *option)
 		num /= base;
 		count++;
 	}
-	count += option->num_n;
+	count += fl->num_n;
 	return (count);
-}
-
-void	print_integer(char c, va_list ap, t_option *option)
-{
-	int				num;
-
-	if (c == 'i' || c == 'd')
-	{
-		num = va_arg(ap, int);
-		if (num < 0)
-		{
-			option->num_n = 1;
-			num *= -1;
-			if (option->precision > 0)
-				option->precision += 1;
-		}
-		print_number(num, option, count_digits(num, 10, option), B_DEC);
-	}
-	else
-	{
-		num = va_arg(ap, unsigned int);
-		if (c == 'u')
-			print_number(num, option, count_digits(num, 10, option), B_DEC);
-		else if (c == 'x')
-			print_number(num, option, count_digits(num, 16, option), B_HEXA_x);
-		else
-			print_number(num, option, count_digits(num, 16, option), B_HEXA_X);
-	}
 }

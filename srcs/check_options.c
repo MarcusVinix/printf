@@ -27,7 +27,9 @@ static int	get_number(const char *format, t_option *option)
 
 static void	set_flags_zero_minus(const char *format, t_option *option)
 {
-	while (format[option->index] == '-' || format[option->index] == '0')
+	while (format[option->index] == '-' || format[option->index] == '0'
+		|| format[option->index] == ' ' || format[option->index] == '#'
+		|| format[option->index] == '+')
 	{
 		if (format[option->index] == '-')
 		{
@@ -40,6 +42,12 @@ static void	set_flags_zero_minus(const char *format, t_option *option)
 			option->flag_zero = 1;
 			option->flag_zero_p = 1;
 		}
+		if (format[option->index] == ' ')
+			option->flag_space = 1;
+		if (format[option->index] == '#')
+			option->flag_hash = 2;
+		if (format[option->index] == '+')
+			option->flag_plus = 1;
 		option->index++;
 	}
 }
@@ -83,7 +91,9 @@ static void	set_precision(const char *format, va_list ap, t_option *option)
 
 void	check_options(const char *format, va_list ap, t_option *option)
 {
-	if (format[option->index] == '-' || format[option->index] == '0')
+	if (format[option->index] == '-' || format[option->index] == '0'
+		|| format[option->index] == ' ' || format[option->index] == '#'
+		|| format[option->index] == '+')
 		set_flags_zero_minus(format, option);
 	set_width(format, ap, option);
 	if (format[option->index] == '.')

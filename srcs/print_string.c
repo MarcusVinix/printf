@@ -12,21 +12,7 @@
 
 #include "../ft_printf.h"
 
-int	string_options(int len, t_option *option)
-{
-	if (option->precision > 0 && option->precision < len)
-		len = option->precision;
-	else if (option->dot && !option->precision)
-		len = 0;
-	if (option->width > len && option->flag_zero)
-		option->zero = option->width - len;
-	else
-		option->zero = 0;
-	if (option->width > len && !option->zero)
-		option->space = option->width - len;
-	option->count += len + option->space + option->zero;
-	return (len);
-}
+static int	string_options(int len, t_option *option);
 
 void	print_string(va_list ap, t_option *option)
 {
@@ -48,4 +34,18 @@ void	print_string(va_list ap, t_option *option)
 	if (option->flag_minus)
 		while (option->space-- > 0)
 			ft_putchar_fd(' ', 1);
+}
+
+static int	string_options(int len, t_option *option)
+{
+	if (option->precision > 0 && option->precision < len)
+		len = option->precision;
+	else if (option->dot && !option->precision)
+		len = 0;
+	if (option->width > len && option->flag_zero)
+		option->zero = option->width - len;
+	if (option->width > len && !option->zero)
+		option->space = option->width - len;
+	option->count += len + option->space + option->zero;
+	return (len);
 }

@@ -62,4 +62,5 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_count_digits(unsigned int number);
 int		ft_is_negative(int number);
 void	ft_putnbr_base_fd(unsigned int num, char *base, int fd);
+char	*ft_itoa_base(int n, char *base, int len_base);
 #endif
