@@ -40,7 +40,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME):	$(OBJS) $(LIBFT)
+$(NAME):	$(OBJS)
+	@make -C $(LIBFT_PATH)
 	cp $(LIBFT) $(NAME)
 	mv $(LIBFT) $(NAME)
 	ar rc $(NAME) $(OBJS)
@@ -49,16 +50,7 @@ $(OBJS_PATH)/%.o:	$(SRCS_PATH)/%.c
 	@mkdir -p $(OBJS_PATH)
 	$(CC) $(CFLAGS)  -I. -I/$(LIBFT_PATH) -c $< -o $@
 
-$(LIBFT):
-	@make -C $(LIBFT_PATH)
-
 bonus: all
-
-comp:
-	$(CC) $(CFLAGS) main.c -o print
-
-comp1:
-	$(CC) $(CFLAGS) test.c $(NAME)
 
 clean:
 	@make clean -C $(LIBFT_PATH)
