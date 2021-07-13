@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:30:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/12 20:51:46 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/12 21:01:09 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,7 @@ int	main(void)
 	printf("ORIGINALLLL\n\n");
 	printf("\n");
 	printf("\n");
-	int ad = -123;
-	printf("%d\n", ad);
-	int *n = &ad;
-	printf("|aad%n|\n", n);
-	//ft_printf("%.p", NULL);
-	printf("%d", ad);
+	printf("retorno: %d", printf(" |%n| ", n));
 	printf("\n");
 	printf("%p", n);
 	printf("\n");
