@@ -6,12 +6,11 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 16:28:42 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/05 16:21:18 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/13 12:18:52 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-#include <stdio.h>
 
 void	print_porcent(t_option *option)
 {
