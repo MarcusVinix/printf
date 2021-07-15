@@ -6,7 +6,7 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/12 18:58:14 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/14 22:50:36 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,13 @@ void	print_n_cuted(int num, t_option *fl, int digits, char *base)
 	fl->space -= fl->flag_plus;
 	if (!fl->precision && fl->flag_plus)
 		fl->zero -= fl->flag_plus;
-	if (fl->flag_hash && ft_strncmp(base, B_HEXA_UP, 16) == 0 && num > 0)
-		ft_putstr_fd("0X", 1);
-	else if (fl->flag_hash && ft_strncmp(base, B_HEXA_LO, 16) == 0 && num > 0)
-		ft_putstr_fd("0x", 1);
 	if (!fl->flag_minus)
 		while (fl->space-- > 0)
 			ft_putchar_fd(' ', 1);
+	if (fl->flag_hash && ft_strncmp(base, B_HEXA_UP, 16) == 0)
+		ft_putstr_fd("0X", 1);
+	else if (fl->flag_hash && ft_strncmp(base, B_HEXA_LO, 16) == 0)
+		ft_putstr_fd("0x", 1);
 	if (fl->flag_plus && !fl->num_n && ft_strncmp(base, B_DEC, 10) == 0)
 		ft_putchar_fd('+', 1);
 	if (fl->num_n == 1)
