@@ -45,15 +45,15 @@ int	ft_printf(const char *format, ...)
 static void	start_options(t_option *option)
 {
 	option->dot = 0;
-	option->flag_minus = 0;
-	option->flag_zero = 0;
-	option->flag_zero_p = 0;
-	option->flag_space = 0;
-	option->flag_hash = 0;
-	option->flag_plus = 0;
+	option->fl_minus = 0;
+	option->fl_zero = 0;
+	option->fl_zero_p = 0;
+	option->fl_sp = 0;
+	option->fl_hash = 0;
+	option->fl_plus = 0;
 	option->num_n = 0;
 	option->precision = 0;
-	option->width = 0;
+	option->wd = 0;
 	option->space = 0;
 	option->zero = 0;
 }

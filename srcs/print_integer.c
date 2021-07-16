@@ -6,18 +6,18 @@
 /*   By: mavinici <mavinici@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 23:21:41 by mavinici          #+#    #+#             */
-/*   Updated: 2021/07/16 11:09:39 by mavinici         ###   ########.fr       */
+/*   Updated: 2021/07/16 13:48:49 by mavinici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	print_n(int num, t_option *fl, int digits, char *base);
-void	print_n_cuted(int num, t_option *fl, int digits, char *base);
-int		count_digits(unsigned int num, int base, t_option *fl);
-void	print_dxX(char c, va_list ap, t_option *fl);
+void	print_n(int num, t_option *op, int digits, char *base);
+void	print_n_cuted(int num, t_option *op, int digits, char *base);
+int		count_digits(unsigned int num, int base, t_option *op);
+void	print_dxX(char c, va_list ap, t_option *op);
 
-void	print_integer(char c, va_list ap, t_option *fl)
+void	print_integer(char c, va_list ap, t_option *op)
 {
 	int				num;
 
@@ -26,92 +26,91 @@ void	print_integer(char c, va_list ap, t_option *fl)
 		num = va_arg(ap, int);
 		if (num < 0)
 		{
-			fl->num_n = 1;
-			fl->flag_plus = 0;
+			op->num_n = 1;
+			op->fl_plus = 0;
 			num *= -1;
-			if (fl->precision > 0)
-				fl->precision += 1;
+			if (op->precision > 0)
+				op->precision += 1;
 		}
-		if (!fl->precision && fl->dot)
-			fl->flag_zero = 0;
-		if (fl->flag_space && !fl->num_n && num >= 0 && !fl->flag_plus)
+		if (!op->precision && op->dot)
+			op->fl_zero = 0;
+		if (op->fl_sp && !op->num_n && num >= 0 && !op->fl_plus)
 			ft_putchar_fd(' ', 1);
-		print_n(num, fl, count_digits(num, 10, fl), B_DEC);
+		print_n(num, op, count_digits(num, 10, op), B_DEC);
 	}
 	else
-		print_dxX(c, ap, fl);
+		print_dxX(c, ap, op);
 }
 
-void	print_dxX(char c, va_list ap, t_option *fl)
+void	print_dxX(char c, va_list ap, t_option *op)
 {
 	unsigned int	num;
 
-	if (!fl->precision && fl->dot)
-		fl->flag_zero = 0;
+	if (!op->precision && op->dot)
+		op->fl_zero = 0;
 	num = va_arg(ap, unsigned int);
 	if (c == 'u')
-		print_n(num, fl, count_digits(num, 10, fl), B_DEC);
+		print_n(num, op, count_digits(num, 10, op), B_DEC);
 	else if (c == 'x')
-		print_n(num, fl, count_digits(num, 16, fl), B_HEXA_LO);
+		print_n(num, op, count_digits(num, 16, op), B_HEXA_LO);
 	else
-		print_n(num, fl, count_digits(num, 16, fl), B_HEXA_UP);
+		print_n(num, op, count_digits(num, 16, op), B_HEXA_UP);
 }
 
-void	print_n(int num, t_option *fl, int digits, char *base)
+void	print_n(int num, t_option *op, int len, char *base)
 {
-	if (fl->num_n || fl->flag_plus)
-		fl->flag_space = 0;
+	if (op->num_n || op->fl_plus)
+		op->fl_sp = 0;
 	if (num == 0)
-		fl->flag_hash = 0;
-	if (fl->dot && !fl->precision && !num)
-		digits = 0;
-	if (fl->precision > digits)
-		fl->zero = (fl->precision - digits);
+		op->fl_hash = 0;
+	if (op->dot && !op->precision && !num)
+		len = 0;
+	if (op->precision > len)
+		op->zero = (op->precision - len);
 	else
 	{
-		if (fl->width > digits && fl->flag_zero)
-			fl->zero = ((fl->width - digits) - fl->flag_space) - fl->flag_hash - fl->flag_plus;
-		if (fl->zero < 0)
-			fl->zero = 0;
+		if (op->wd > len && op->fl_zero)
+			op->zero = (op->wd - len) - op->fl_sp - op->fl_hash - op->fl_plus;
+		if (op->zero < 0)
+			op->zero = 0;
 	}
-	if (fl->zero > 0)
-		digits += fl->zero;
-	if (fl->width > digits && !fl->flag_zero)
-		fl->space = ((fl->width - digits) - fl->flag_space) - fl->flag_hash  - fl->flag_plus;
-	if (fl->space < 0)
-		fl->space = 0;
-	fl->count += digits + fl->space;
-	fl->count += fl->flag_hash + fl->flag_space;
-	print_n_cuted(num, fl, digits, base);
+	if (op->zero > 0)
+		len += op->zero;
+	if (op->wd > len && !op->fl_zero)
+		op->space = (op->wd - len) - op->fl_sp - op->fl_hash - op->fl_plus;
+	if (op->space < 0)
+		op->space = 0;
+	op->count += len + op->space;
+	op->count += op->fl_hash + op->fl_sp;
+	print_n_cuted(num, op, len, base);
 }
 
-void	print_n_cuted(int num, t_option *fl, int digits, char *base)
+void	print_n_cuted(int num, t_option *op, int len, char *base)
 {
-
-	if (!fl->flag_minus)
-		while (fl->space-- > 0)
+	if (!op->fl_minus)
+		while (op->space-- > 0)
 			ft_putchar_fd(' ', 1);
-	if (fl->flag_hash && ft_strncmp(base, B_HEXA_UP, 16) == 0)
+	if (op->fl_hash && ft_strncmp(base, B_HEXA_UP, 16) == 0)
 		ft_putstr_fd("0X", 1);
-	else if (fl->flag_hash && ft_strncmp(base, B_HEXA_LO, 16) == 0)
+	else if (op->fl_hash && ft_strncmp(base, B_HEXA_LO, 16) == 0)
 		ft_putstr_fd("0x", 1);
-	if (fl->flag_plus && !fl->num_n && ft_strncmp(base, B_DEC, 10) == 0)
+	if (op->fl_plus && !op->num_n && ft_strncmp(base, B_DEC, 10) == 0)
 	{
 		ft_putchar_fd('+', 1);
-		fl->count += 1;
+		op->count += 1;
 	}
-	if (fl->num_n == 1)
+	if (op->num_n == 1)
 		ft_putchar_fd('-', 1);
-	while (fl->zero-- > 0)
+	while (op->zero-- > 0)
 		ft_putchar_fd('0', 1);
-	if (digits)
+	if (len)
 		ft_putnbr_base_fd(num, base, 1);
-	if (fl->flag_minus)
-		while (fl->space-- > 0)
+	if (op->fl_minus)
+		while (op->space-- > 0)
 			ft_putchar_fd(' ', 1);
 }
 
-int	count_digits(unsigned int num, int base, t_option *fl)
+int	count_digits(unsigned int num, int base, t_option *op)
 {
 	int	count;
 
@@ -123,6 +122,6 @@ int	count_digits(unsigned int num, int base, t_option *fl)
 		num /= base;
 		count++;
 	}
-	count += fl->num_n;
+	count += op->num_n;
 	return (count);
 }

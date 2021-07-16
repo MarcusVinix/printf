@@ -23,15 +23,15 @@ void	print_string(va_list ap, t_option *option)
 	if (!str)
 		str = "(null)";
 	len = string_options(ft_strlen(str), option);
-	if (!option->flag_minus)
+	if (!option->fl_minus)
 		while (option->space-- > 0)
 			ft_putchar_fd(' ', 1);
-	if (option->flag_zero)
+	if (option->fl_zero)
 		while (option->zero-- > 0)
 			ft_putchar_fd('0', 1);
 	while (len--)
 		ft_putchar_fd(*str++, 1);
-	if (option->flag_minus)
+	if (option->fl_minus)
 		while (option->space-- > 0)
 			ft_putchar_fd(' ', 1);
 }
@@ -42,10 +42,10 @@ static int	string_options(int len, t_option *option)
 		len = option->precision;
 	else if (option->dot && !option->precision)
 		len = 0;
-	if (option->width > len && option->flag_zero)
-		option->zero = option->width - len;
-	if (option->width > len && !option->zero)
-		option->space = option->width - len;
+	if (option->wd > len && option->fl_zero)
+		option->zero = option->wd - len;
+	if (option->wd > len && !option->zero)
+		option->space = option->wd - len;
 	option->count += len + option->space + option->zero;
 	return (len);
 }

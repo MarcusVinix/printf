@@ -16,16 +16,16 @@ typedef struct s_option
 	int	zero;
 	int	index;
 	int	count;
-	int	width;
+	int	wd;
 	int	dot;
 	int	precision;
 	int	num_n;
-	int	flag_minus;
-	int	flag_zero;
-	int	flag_zero_p;
-	int	flag_space;
-	int	flag_hash;
-	int	flag_plus;
+	int	fl_minus;
+	int	fl_zero;
+	int	fl_zero_p;
+	int	fl_sp;
+	int	fl_hash;
+	int	fl_plus;
 }	t_option;
 
 int		ft_printf(const char *format, ...);
