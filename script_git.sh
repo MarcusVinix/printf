@@ -1,3 +1,3 @@
 git add .
-git commit -m "add new funcitons"
+git commit -m "building readme"
 git push 
