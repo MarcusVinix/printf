@@ -39,6 +39,6 @@
 > * Flag '0' result in undefined behavior with specifier c, s and p  
 > * FLag '.' result in undefined behavior with specifier c and p  
 >   
-> Syntax to use printf  
+> Syntax to use printf:  
 `%[flag][min-width].[precision][length modifier][conversion specifier]`
 #### TODO more information
