@@ -41,4 +41,4 @@
 >   
 > Syntax to use printf:  
 `%[flag][min-width].[precision][length modifier][conversion specifier]`
-#### TODO more information
+ ***
